@@ -2,10 +2,10 @@
 
 ## 28 сентября
 
-Модель `User`
+<h1>Баль Наталья Александровна</h1>>
 
 ~~~~
-User email password_digest name admin
+
 ~~~~
 
 ~~~~
