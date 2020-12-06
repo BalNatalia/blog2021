@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "name": "blog_etalon_2020",
+=======
+  "name": "blog",
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23
   "private": true,
   "dependencies": {
     "@rails/actioncable": "^6.0.0",

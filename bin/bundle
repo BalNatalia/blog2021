@@ -31,7 +31,11 @@ m = Module.new do
         bundler_version = a
       end
       next unless a =~ /\A--bundler(?:[= ](#{Gem::Version::VERSION_PATTERN}))?\z/
+<<<<<<< HEAD
       bundler_version = $1 || ">= 0.a"
+=======
+      bundler_version = $1
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23
       update_index = i
     end
     bundler_version
@@ -61,15 +65,36 @@ m = Module.new do
   end
 
   def bundler_version
+<<<<<<< HEAD
     @bundler_version ||= begin
       env_var_version || cli_arg_version ||
         lockfile_version || "#{Gem::Requirement.default}.a"
     end
+=======
+    @bundler_version ||=
+      env_var_version || cli_arg_version ||
+        lockfile_version
+  end
+
+  def bundler_requirement
+    return "#{Gem::Requirement.default}.a" unless bundler_version
+
+    bundler_gem_version = Gem::Version.new(bundler_version)
+
+    requirement = bundler_gem_version.approximate_recommendation
+
+    return requirement unless Gem::Version.new(Gem::VERSION) < Gem::Version.new("2.7.0")
+
+    requirement += ".a" if bundler_gem_version.prerelease?
+
+    requirement
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23
   end
 
   def load_bundler!
     ENV["BUNDLE_GEMFILE"] ||= gemfile
 
+<<<<<<< HEAD
     # must dup string for RG < 1.8 compatibility
     activate_bundler(bundler_version.dup)
   end
@@ -80,13 +105,26 @@ m = Module.new do
     end
     gem_error = activation_error_handling do
       gem "bundler", bundler_version
+=======
+    activate_bundler
+  end
+
+  def activate_bundler
+    gem_error = activation_error_handling do
+      gem "bundler", bundler_requirement
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23
     end
     return if gem_error.nil?
     require_error = activation_error_handling do
       require "bundler/version"
     end
+<<<<<<< HEAD
     return if require_error.nil? && Gem::Requirement.new(bundler_version).satisfied_by?(Gem::Version.new(Bundler::VERSION))
     warn "Activating bundler (#{bundler_version}) failed:\n#{gem_error.message}\n\nTo install the version of bundler this project requires, run `gem install bundler -v '#{bundler_version}'`"
+=======
+    return if require_error.nil? && Gem::Requirement.new(bundler_requirement).satisfied_by?(Gem::Version.new(Bundler::VERSION))
+    warn "Activating bundler (#{bundler_requirement}) failed:\n#{gem_error.message}\n\nTo install the version of bundler this project requires, run `gem install bundler -v '#{bundler_requirement}'`"
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23
     exit 42
   end
 

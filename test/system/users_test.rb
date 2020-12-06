@@ -15,7 +15,11 @@ class UsersTest < ApplicationSystemTestCase
     click_on "New User"
 
     check "Admin" if @user.admin
+<<<<<<< HEAD
     fill_in "Login", with: @user.login
+=======
+    fill_in "Email", with: @user.email
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23
     fill_in "Name", with: @user.name
     fill_in "Password digest", with: @user.password_digest
     click_on "Create User"
@@ -29,7 +33,11 @@ class UsersTest < ApplicationSystemTestCase
     click_on "Edit", match: :first
 
     check "Admin" if @user.admin
+<<<<<<< HEAD
     fill_in "Login", with: @user.login
+=======
+    fill_in "Email", with: @user.email
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23
     fill_in "Name", with: @user.name
     fill_in "Password digest", with: @user.password_digest
     click_on "Update User"

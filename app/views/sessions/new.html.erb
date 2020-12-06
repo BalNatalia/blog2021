@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%= form_tag login_path do %>
 <div class="form-group">
   <%= label_tag :login, User.human_attribute_name(:login) %>
@@ -8,4 +9,20 @@
   <%= password_field_tag :password, nil, class: 'form-control' %>
 </div>
 <%= submit_tag t('.submit'), class: 'btn btn-primary' %>
+=======
+<p id="notice"><%= notice %></p>
+<h1>Вход</h1>
+<%= form_tag create_session_path do %>
+<div class="field">
+<%= label_tag :email %>
+<%= text_field_tag :email %>
+</div>
+<div class="field">
+<%= label_tag :password %>
+<%= password_field_tag :password %>
+</div>
+<div class="actions">
+<%= submit_tag 'Log In' %>
+</div>
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23
 <% end %>

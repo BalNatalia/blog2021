@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h1><%= @user.name %></h1>
 <% if @user.edit_by?(@current_user) %>
 <div class="mb-4">
@@ -7,3 +8,29 @@
 <% end %>
 <%= render @posts %>
 <%= paginate @posts %>
+=======
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @user.email %>
+</p>
+
+<p>
+  <strong>Password digest:</strong>
+  <%= @user.password_digest %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @user.name %>
+</p>
+
+<p>
+  <strong>Admin:</strong>
+  <%= @user.admin %>
+</p>
+
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<<<<<<< HEAD
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -20,4 +21,26 @@
     <%= yield %>
   </main>
 </body>
+=======
+  <head>
+    <title>Blog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div>
+    <% if session[:user_id] %>
+      <%= "Здравствуйте, #{@current_user.name}!" %>
+      <%= link_to 'Выйти', destroy_session_path %>
+    <% else %>
+      <%= link_to 'Войти', login_path %>
+    <% end %>
+    </div>
+    <%= yield %>
+  </body>
+>>>>>>> 525814296584dd49da78dc598afcf50ee392fa23
 </html>
