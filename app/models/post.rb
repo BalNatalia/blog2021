@@ -17,5 +17,6 @@ class Post < ApplicationRecord
     if  new_record? && Post.where('user_id = ? and created_at > ?', user_id, 1.day.ago).count >= 5
             errors.add(:base, 'Превышен лимит на максимальное количество сообщений за сутки')
   end
+  
 end
 end
